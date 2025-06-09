@@ -1,0 +1,14 @@
+# Mining Simulation
+class MinedBlock(Block):
+    def mine_block(self, difficulty):
+        print(f"\n Mining block with difficulty {difficulty}...")
+        start_time = time.time()
+        target = '0' * difficulty
+        attempts = 0
+        while self.hash[:difficulty] != target:
+            self.nonce += 1
+            self.hash = self.calculate_hash()
+            attempts += 1
+        duration = time.time() - start_time
+        print(f" Mined! Nonce: {self.nonce}, Attempts: {attempts}, Time: {duration:.2f}s")
+        return duration
