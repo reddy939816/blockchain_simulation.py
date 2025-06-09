@@ -1,0 +1,27 @@
+
+# Mine a block
+mined = MinedBlock(3, time.time(), "Mining Block", blockchain[-1].hash)
+mined.mine_block(difficulty=4)
+
+# Consensus Mechanism Simulation
+print("\n Consensus Mechanism Simulation:")
+
+# PoW - Highest Power Wins
+miner = {'id': 'MinerA', 'power': random.randint(1, 100)}
+print(f"🛠 PoW: {miner['id']} selected (Power = {miner['power']})")
+
+# PoS - Highest Stake Wins
+staker = {'id': 'StakerB', 'stake': random.randint(1, 100)}
+print(f"🛠 PoS: {staker['id']} selected (Stake = {staker['stake']})")
+
+# DPoS - Votes determine winner
+voters = ['User1', 'User2', 'User3']
+candidates = ['DelegateX', 'DelegateY']
+votes = {candidate: 0 for candidate in candidates}
+
+for voter in voters:
+    vote = random.choice(candidates)
+    votes[vote] += 1
+
+dpos_winner = max(votes, key=votes.get)
+print(f"🛠 DPoS: {dpos_winner} selected with {votes[dpos_winner]} votes")
